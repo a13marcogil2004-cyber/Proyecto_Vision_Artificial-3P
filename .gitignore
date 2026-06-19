@@ -1,0 +1,29 @@
+# Datasets descargados (pesan mucho, no se suben al repo)
+birds-olyak-*/
+*.zip
+
+# Resultados de entrenamiento de YOLO (se generan al correr el notebook)
+runs_aves/
+runs/
+
+# Modelos entrenados (opcional: descomenta si no quieres subir el .pt)
+# *.pt
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Roboflow / API keys
+.env
+*.key
