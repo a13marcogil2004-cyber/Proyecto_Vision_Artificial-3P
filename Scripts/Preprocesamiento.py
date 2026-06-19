@@ -51,3 +51,27 @@ def validar_split(ruta_split: str, nombre_split: str) -> dict:
         stats["labels"] += 1
         with open(label_path, "r") as f:
             lineas = [l.strip() for l in f.readlines() if l.strip()]
+
+        for linea in lineas:
+            partes = linea.split()
+            if len(partes) != 5:
+                stats["labels_mal_formateados"].append(label_path.name)
+                continue
+            try:
+                clase = int(partes[0])
+                x, y, w, h = map(float, partes[1:])
+                if not all(0.0 <= v <= 1.0 for v in (x, y, w, h)):
+                    stats["labels_mal_formateados"].append(label_path.name)
+                else:
+                    stats["total_cajas"] += 1
+            except ValueError:
+                stats["labels_mal_formateados"].append(label_path.name)
+
+    return stats
+
+
+def imprimir_reporte(stats: dict):
+    print(f"\n--- Split: {stats['split']} ---")
+    print(f"  Imágenes encontradas:     {stats['imagenes']}")
+    print(f"  Imágenes con etiqueta:    {stats['labels']}")
+    print(f"  Total de cajas (boxes):   {stats['total_cajas']}")
