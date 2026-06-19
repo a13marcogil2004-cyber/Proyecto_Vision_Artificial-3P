@@ -34,3 +34,20 @@ def validar_split(ruta_split: str, nombre_split: str) -> dict:
         "total_cajas": 0,
     }
 
+    if not carpeta_imagenes.exists():
+        print(f"  [!] No existe la carpeta de imágenes: {carpeta_imagenes}")
+        return stats
+
+    extensiones_validas = {".jpg", ".jpeg", ".png"}
+    imagenes = [f for f in carpeta_imagenes.iterdir() if f.suffix.lower() in extensiones_validas]
+    stats["imagenes"] = len(imagenes)
+
+    for img_path in imagenes:
+        label_path = carpeta_labels / f"{img_path.stem}.txt"
+        if not label_path.exists():
+            stats["imagenes_sin_label"].append(img_path.name)
+            continue
+
+        stats["labels"] += 1
+        with open(label_path, "r") as f:
+            lineas = [l.strip() for l in f.readlines() if l.strip()]
