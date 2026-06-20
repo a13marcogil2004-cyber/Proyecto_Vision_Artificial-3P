@@ -67,17 +67,6 @@ python scripts/preprocesamiento.py --dataset ruta/al/dataset
 python scripts/inferencia.py --modelo modelo_aves_best.pt --imagenes ruta/a/imagenes --salida evidencias
 ```
 
-## Resultados del modelo
-| Métrica | Valor |
-|---|---|
-| mAP50 | *(completar tras correr el notebook)* |
-| mAP50-95 | *(completar tras correr el notebook)* |
-| Precisión | *(completar tras correr el notebook)* |
-| Recall | *(completar tras correr el notebook)* |
-
-> Las métricas finales y las curvas de entrenamiento (`results.png`) se generan automáticamente al correr el notebook y deben colocarse en `evidencias/`.
----
-
 ## Caso de Estudio: Aplicación en la vida real
 ### Título: Sistema de Detección Aviar para Prevención de Colisiones en Aeropuertos (Bird Strike Prevention System)
 ### 1. Problema a resolver
